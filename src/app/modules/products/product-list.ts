@@ -11,54 +11,78 @@ import { Product } from '../../core/models/product.model';
 @Component({
   selector: 'product-list',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule],
   templateUrl: './product-list.html',
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
+  ],
 })
 export class ProductList implements OnInit {
 
-  private service = inject(ProductService);
+  // Servicios
+  private productService = inject(ProductService);
   private dialog = inject(MatDialog);
 
-  displayedColumns = ['name', 'sku', 'stock', 'salePrice', 'actions'];
-  data: Product[] = [];
+  // Tabla
+  displayedColumns = [
+    'name', 'sku', 'stock', 'costPrice', 'salePrice', 'category', 'actions'
+  ];
+
+  // Datos
+  products: Product[] = [];
 
   ngOnInit(): void {
-    this.loadData();
+    this.loadProducts();
   }
 
-  loadData() {
-    this.service.getAll().subscribe({
-      next: (resp) => this.data = resp,
+  // CARGA DE PRODUCTOS (único método)
+  loadProducts() {
+    this.productService.getAll().subscribe((res: Product[]) => {
+      this.products = res;
     });
   }
 
+  // CREAR PRODUCTO
   openCreate() {
-    const dialogRef = this.dialog.open(ProductForm, {
+    this.dialog.open(ProductForm, {
       width: '400px',
       data: null
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) this.loadData();
+    }).afterClosed().subscribe(done => {
+      if (done) this.loadProducts();
     });
   }
 
+  // EDITAR PRODUCTO
   openEdit(product: Product) {
-    const dialogRef = this.dialog.open(ProductForm, {
+    this.dialog.open(ProductForm, {
       width: '400px',
       data: product
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) this.loadData();
+    }).afterClosed().subscribe(done => {
+      if (done) this.loadProducts();
     });
   }
 
+  // AJUSTAR STOCK
+  adjust(product: Product) {
+    import('./product-adjust').then(m => {
+      this.dialog.open(m.ProductAdjust, {
+        width: '420px',
+        data: product
+      }).afterClosed().subscribe(done => {
+        if (done) this.loadProducts(); // ✔ unificado
+      });
+    });
+  }
+
+  // ELIMINAR PRODUCTO
   delete(id: number) {
     if (!confirm('¿Eliminar producto?')) return;
 
-    this.service.delete(id).subscribe({
-      next: () => this.loadData()
+    this.productService.delete(id).subscribe(() => {
+      this.loadProducts();
     });
   }
 }
+

@@ -30,6 +30,28 @@ export const routes: Routes = [
     import('./modules/auth/login.component')
       .then(m => m.LoginComponent)
 },
+{
+  path: 'movements',
+  loadComponent: () => import('./modules/movements/movement-list')
+    .then(m => m.MovementList)
+},
+{
+  path: 'movements/in',
+  loadComponent: () => import('./modules/movements/movement-in')
+    .then(m => m.MovementIn)
+},
+{
+  path: 'movements/out',
+  loadComponent: () => import('./modules/movements/movement-out')
+    .then(m => m.MovementOut)
+},
+{
+  path: 'movements/history',
+  loadComponent: () =>
+    import('./modules/movements/movement-history')
+      .then(m => m.MovementHistory),
+},
+
 
 
     ]

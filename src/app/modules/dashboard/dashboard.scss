@@ -1,34 +1,78 @@
-.cards {
-  display: flex;
-  gap: 20px;
+.dashboard-container {
+  padding: 20px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
   margin-bottom: 30px;
-
-  mat-card {
-    flex: 1;
-    padding: 20px;
-
-    h3 {
-      margin: 0 0 10px;
-    }
-
-    .value {
-      font-size: 28px;
-      font-weight: bold;
-    }
-  }
 }
 
-h2 {
-  margin-top: 25px;
-  margin-bottom: 10px;
+.stat-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform .15s ease-out;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-card h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+.stat-card .value {
+  font-size: 28px;
   font-weight: bold;
+  color: #000;
 }
 
-ul {
+.section {
+  margin-top: 30px;
+}
+
+.section h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.section ul {
   list-style: none;
   padding: 0;
+}
 
-  li {
-    padding: 5px 0;
-  }
+.section li {
+  padding: 6px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.empty {
+  color: #777;
+  font-size: 14px;
+  padding: 8px;
+}
+
+.in {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.out {
+  color: #dc3545;
+  font-weight: 600;
 }

@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Ajustar Stock</h2>
+
+<div mat-dialog-content>
+
+  <p><strong>Producto:</strong> {{ data.name }}</p>
+  <p><strong>Stock actual:</strong> {{ data.stock }}</p>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Tipo de ajuste</mat-label>
+    <mat-select formControlName="type">
+      <mat-option value="IN">Entrada</mat-option>
+      <mat-option value="OUT">Salida</mat-option>
+      <mat-option value="SET">Ajustar a valor exacto</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Entrada / Salida -->
+  <div *ngIf="form.value.type !== 'SET'">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Cantidad</mat-label>
+      <input type="number" matInput formControlName="quantity">
+    </mat-form-field>
+  </div>
+
+  <!-- Ajuste directo -->
+  <div *ngIf="form.value.type === 'SET'">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Nuevo valor</mat-label>
+      <input type="number" matInput formControlName="newValue">
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Descripción (opcional)</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+</div>

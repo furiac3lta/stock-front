@@ -26,15 +26,16 @@ export class ProductForm {
 
   categories: any[] = [];
 
-  form = new FormGroup({
-    name: new FormControl('', Validators.required),
-    sku: new FormControl('', Validators.required),
-    stock: new FormControl(0, Validators.required),
-    costPrice: new FormControl(0, Validators.required),
-    salePrice: new FormControl(0, Validators.required),
-    categoryId: new FormControl(null, Validators.required),
-    active: new FormControl(true)
-  });
+ form = new FormGroup({
+  name: new FormControl<string>('', { nonNullable: true }),
+  sku: new FormControl<string>('', { nonNullable: true }),
+  stock: new FormControl<number>(0, { nonNullable: true }),
+  costPrice: new FormControl<number>(0, { nonNullable: true }),
+  salePrice: new FormControl<number>(0, { nonNullable: true }),
+  categoryId: new FormControl<number>(0, { nonNullable: true }),
+  active: new FormControl<boolean>(true, { nonNullable: true }),
+});
+
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Product | null) {}
 
@@ -45,6 +46,9 @@ export class ProductForm {
       this.form.patchValue(this.data);
     }
   }
+cancel() {
+  this.dialogRef.close();
+}
 
   save() {
     const value = this.form.value as Product;

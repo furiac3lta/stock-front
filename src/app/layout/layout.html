@@ -1,5 +1,6 @@
 <mat-sidenav-container class="layout-container">
 
+  <!-- SIDEBAR -->
   <mat-sidenav mode="side" opened class="sidebar">
     <h2 class="logo">StockApp</h2>
 
@@ -14,14 +15,22 @@
         <mat-icon>inventory</mat-icon>
         <span>Productos</span>
       </a>
-<a mat-list-item routerLink="/categories">
-  <mat-icon>category</mat-icon>
-  <span>Categorías</span>
-</a>
+
+      <a mat-list-item routerLink="/categories">
+        <mat-icon>category</mat-icon>
+        <span>Categorías</span>
+      </a>
+
+      <!-- NUEVO: Movimientos -->
+      <a mat-list-item routerLink="/movements/history">
+        <mat-icon>history</mat-icon>
+        <span>Movimientos</span>
+      </a>
 
     </mat-nav-list>
   </mat-sidenav>
 
+  <!-- CONTENT -->
   <mat-sidenav-content class="content">
     <mat-toolbar color="primary">
       <span>Sistema de Stock</span>

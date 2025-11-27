@@ -2,8 +2,14 @@ import { HttpInterceptorFn } from '@angular/common/http';
 
 export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
 
-  // Evitar error en SSR
-  if (typeof window === 'undefined') {
+  const isBrowser = typeof window !== 'undefined';
+
+  if (!isBrowser) {
+    return next(req);
+  }
+
+  // Ignorar prefetch internos de Vite/Angular
+  if (req.url.includes('vite') || req.headers.has('Sec-Fetch-Mode')) {
     return next(req);
   }
 

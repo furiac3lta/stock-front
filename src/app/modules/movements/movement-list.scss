@@ -1,0 +1,41 @@
+.full {
+  width: 100%;
+}
+
+.in {
+  color: green;
+  font-weight: bold;
+}
+
+.out {
+  color: red;
+  font-weight: bold;
+}
+
+mat-card {
+  padding: 20px;
+  margin: 20px auto;
+}
+.full {
+  width: 100%;
+}
+
+.in {
+  color: green;
+}
+
+.out {
+  color: red;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}

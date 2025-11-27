@@ -1,0 +1,19 @@
+<h2>Salida de stock</h2>
+
+<form [formGroup]="form" class="form-container">
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Cantidad a descontar</mat-label>
+    <input matInput type="number" formControlName="quantity" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Descripción (opcional)</mat-label>
+    <input matInput type="text" formControlName="description" />
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-button (click)="dialogRef.close()">Cancelar</button>
+    <button mat-flat-button color="warn" (click)="save()">Descontar</button>
+  </div>
+</form>
