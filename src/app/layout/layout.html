@@ -1,0 +1,36 @@
+<mat-sidenav-container class="layout-container">
+
+  <mat-sidenav mode="side" opened class="sidebar">
+    <h2 class="logo">StockApp</h2>
+
+    <mat-nav-list>
+
+      <a mat-list-item routerLink="/">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
+
+      <a mat-list-item routerLink="/products">
+        <mat-icon>inventory</mat-icon>
+        <span>Productos</span>
+      </a>
+<a mat-list-item routerLink="/categories">
+  <mat-icon>category</mat-icon>
+  <span>Categorías</span>
+</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <mat-toolbar color="primary">
+      <span>Sistema de Stock</span>
+    </mat-toolbar>
+
+    <div class="content-body">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

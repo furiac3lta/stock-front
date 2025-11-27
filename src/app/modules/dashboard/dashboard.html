@@ -1,0 +1,32 @@
+<h1>Dashboard</h1>
+
+<div class="cards">
+  <mat-card>
+    <h3>Total de Productos</h3>
+    <p class="value">{{ totalProductos }}</p>
+  </mat-card>
+
+  <mat-card>
+    <h3>Total de Categorías</h3>
+    <p class="value">{{ totalCategorias }}</p>
+  </mat-card>
+
+  <mat-card>
+    <h3>Valor del Inventario</h3>
+    <p class="value">{{ valorInventario | currency:'ARS' }}</p>
+  </mat-card>
+</div>
+
+<h2>Stock Bajo (<= 5)</h2>
+<ul>
+  <li *ngFor="let p of stockBajo">
+    {{ p.name }} - Stock: {{ p.stock }}
+  </li>
+</ul>
+
+<h2>Últimos Productos</h2>
+<ul>
+  <li *ngFor="let p of ultimosProductos">
+    {{ p.name }} - ${{ p.salePrice }}
+  </li>
+</ul>

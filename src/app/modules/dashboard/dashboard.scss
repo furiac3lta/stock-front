@@ -1,0 +1,34 @@
+.cards {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+
+  mat-card {
+    flex: 1;
+    padding: 20px;
+
+    h3 {
+      margin: 0 0 10px;
+    }
+
+    .value {
+      font-size: 28px;
+      font-weight: bold;
+    }
+  }
+}
+
+h2 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 5px 0;
+  }
+}
