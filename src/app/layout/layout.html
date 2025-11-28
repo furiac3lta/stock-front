@@ -1,8 +1,5 @@
 <div class="layout">
 
-  <!-- NAVBAR FIJO -->
-  <app-navbar class="navbar-fixed" (toggleSidebar)="toggleSidebar()"></app-navbar>
-
   <div class="main-area">
 
     <!-- SIDEBAR FIJO -->
@@ -37,14 +34,20 @@
       </mat-sidenav>
 
       <!-- SOLO ESTO SCROLLEA -->
-      <mat-sidenav-content class="content-scroll">
-        <router-outlet></router-outlet>
+<mat-sidenav-content class="content-wrapper">
+          <app-navbar class="navbar-fixed" (toggleSidebar)="toggleSidebar()"></app-navbar>
+
+      
+          <div class="content-scroll">
+  <router-outlet></router-outlet>
+              </div>
+  <app-footer class="footer-fixed"></app-footer>
+
       </mat-sidenav-content>
 
     </mat-sidenav-container>
   </div>
 
   <!-- FOOTER FIJO -->
-  <app-footer class="footer-fixed"></app-footer>
 
 </div>

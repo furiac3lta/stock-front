@@ -1,10 +1,12 @@
 <div class="header">
   <h2>Categorías</h2>
 
-  <button mat-raised-button color="primary" (click)="openCreate()">
-    <mat-icon>add</mat-icon> Nueva Categoría
+  <button class="btn-add" (click)="openCreate()">
+    <mat-icon>add</mat-icon>
+    Nueva Categoría
   </button>
 </div>
+
 
 <table mat-table [dataSource]="data" class="mat-elevation-z2">
 

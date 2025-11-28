@@ -2,6 +2,14 @@ import { Routes } from '@angular/router';
 import { Layout } from './layout/layout';
 
 export const routes: Routes = [
+
+{
+    path: 'login',
+    loadComponent: () =>
+      import('./modules/auth/login.component')
+        .then(m => m.LoginComponent)
+  },
+
   {
     path: '',
     component: Layout,
@@ -23,12 +31,6 @@ export const routes: Routes = [
   loadComponent: () =>
     import('./modules/categories/category-list')
     .then(m => m.CategoryList)
-},
-{
-  path: 'login',
-  loadComponent: () =>
-    import('./modules/auth/login.component')
-      .then(m => m.LoginComponent)
 },
 {
   path: 'movements',

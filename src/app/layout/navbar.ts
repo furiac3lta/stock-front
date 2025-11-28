@@ -15,4 +15,10 @@ export class Navbar {
     nombre: 'Marce Dev',
     logueado: true
   };
+  logout() {
+  localStorage.removeItem('token'); // si usás token
+  sessionStorage.clear();           // limpia sesión si hace falta
+  window.location.href = '/login';  // redirige al login
+}
+
 }

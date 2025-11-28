@@ -33,3 +33,24 @@
 .user-area .material-icons {
   color: #000 !important;
 }
+.logout-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000; /* negro porque navbar es amarillo */
+  padding: 4px;
+}
+
+.logout-btn:hover .material-icons {
+  color: #ff0000; /* rojo suave en hover */
+}
+@media (max-width: 900px) {
+  .links {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .icon-btn span {
+    font-size: 30px;
+  }
+}

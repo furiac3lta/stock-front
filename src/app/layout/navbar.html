@@ -6,7 +6,11 @@
   <span class="title">Sistema de Stock</span>
 
   <div class="user-area">
-    <span class="user-name">{{ usuario.nombre }}</span>
-    <span class="material-icons">account_circle</span>
-  </div>
+  <span class="user-name">{{ usuario.nombre }}</span>
+
+  <button class="logout-btn" (click)="logout()">
+    <span class="material-icons">logout</span>
+  </button>
+</div>
+
 </nav>

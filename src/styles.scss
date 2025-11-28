@@ -1,9 +1,7 @@
+/* ===============================
+   THEME PRINCIPAL ANGULAR MATERIAL
+   =============================== */
 
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
 html {
@@ -18,22 +16,301 @@ html {
 }
 
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
   color-scheme: light;
-
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
-
-  // Reset the user agent margin.
   margin: 0;
 }
-/* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+/* ===============================
+   BOTÓN "NUEVA CATEGORÍA"
+   =============================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffdd00;
+  color: #000;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  transition: 0.2s;
+
+  mat-icon {
+    font-size: 20px;
+  }
+}
+
+.btn-add:hover {
+  background: #ffe64d;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.22);
+  transform: translateY(-1px);
+}
+
+/* ===============================
+   DIALOG — ESTILO MODERNO
+   =============================== */
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 20px !important;
+  padding: 20px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18) !important;
+}
+
+/* título */
+.mat-mdc-dialog-title {
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin-bottom: 5px !important;
+}
+
+/* contenido */
+.mat-mdc-dialog-content {
+  padding-top: 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+}
+
+/* ===============================
+   FORM FIELDS (OUTLINE MODERNOS)
+   =============================== */
+
+.mat-mdc-form-field {
+  width: 100% !important;
+}
+
+.mat-mdc-text-field-wrapper {
+  background: #f5f5f5 !important;
+  border-radius: 14px !important;
+}
+
+.mdc-notched-outline {
+  border-radius: 14px !important;
+}
+
+.mdc-notched-outline__leading,
+.mdc-notched-outline__notch,
+.mdc-notched-outline__trailing {
+  border-color: #ccc !important;
+}
+
+/* foco en amarillo patito */
+.mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__leading,
+.mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__notch,
+.mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: #ffdd00 !important;
+}
+
+/* labels */
+.mdc-floating-label {
+  color: #666 !important;
+  font-weight: 500 !important;
+}
+
+/* textos */
+.mat-mdc-input-element, .mat-mdc-select-trigger {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #333 !important;
+}
+
+/* ===============================
+   SLIDE TOGGLE
+   =============================== */
+.mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked .mdc-switch__track {
+  background-color: rgba(255, 221, 0, 0.4) !important;
+}
+
+.mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked .mdc-switch__thumb {
+  background: #ffdd00 !important;
+}
+
+/* ===============================
+   BOTONES DEL DIALOG
+   =============================== */
+
+.mat-mdc-dialog-actions {
+  display: flex !important;
+  justify-content: space-between !important;
+  padding-top: 15px !important;
+}
+
+button.mdc-button {
+  font-weight: 600 !important;
+}
+
+button.mat-mdc-raised-button {
+  background: #ffdd00 !important;
+  color: #000 !important;
+  border-radius: 25px !important;
+  padding: 4px 22px !important;
+  font-weight: 600 !important;
+}
+/* =======================================================
+   DIALOGO PREMIUM – STOCKAPP (Angular Material 20 / MDC)
+   ======================================================= */
+
+/* SUPERFICIE DEL DIALOG */
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 26px !important;
+  padding: 26px !important;
+  background: #ffffff !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.22) !important;
+}
+
+/* TITULO */
+.mat-mdc-dialog-title {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  margin-bottom: 15px !important;
+  letter-spacing: -0.3px;
+}
+
+/* CONTENIDO */
+.mat-mdc-dialog-content {
+  padding: 0 !important;
+  margin-top: 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 22px !important;
+}
+
+/* =======================================================
+   CAMPOS (INPUTS)
+   ======================================================= */
+
+/* Wrapper general */
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+/* Caja del input */
+.mat-mdc-text-field-wrapper {
+  background: #f7f7f7 !important;
+  border-radius: 14px !important;
+  padding: 4px 14px !important;
+  transition: background 0.2s ease-in-out, box-shadow 0.25s ease;
+}
+
+/* Bordes outline */
+.mdc-notched-outline__leading,
+.mdc-notched-outline__notch,
+.mdc-notched-outline__trailing {
+  border-color: #d4d4d4 !important;
+  border-width: 1.5px !important;
+}
+
+/* ON FOCUS – Amarillo patito y sombra */
+.mdc-text-field--focused .mdc-notched-outline__leading,
+.mdc-text-field--focused .mdc-notched-outline__notch,
+.mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-color: #ffdd00 !important;
+}
+
+.mdc-text-field--focused .mat-mdc-text-field-wrapper {
+  background: #fffceb !important;
+  box-shadow: 0 0 0 3px rgba(255,221,0,0.35) !important;
+}
+
+/* Label flotante */
+.mdc-floating-label {
+  color: #666 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+/* Texto del input */
+.mat-mdc-input-element,
+.mat-mdc-select-value-text {
+  font-size: 16px !important;
+  color: #222 !important;
+  font-weight: 500 !important;
+}
+
+/* Select icon */
+.mat-mdc-select-arrow {
+  color: #555 !important;
+}
+
+/* =======================================================
+   SLIDE TOGGLE
+   ======================================================= */
+
+.mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked .mdc-switch__track {
+  background-color: rgba(255,221,0,0.5) !important;
+}
+.mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked .mdc-switch__thumb {
+  background: #ffdd00 !important;
+}
+
+/* =======================================================
+   BOTONES
+   ======================================================= */
+
+.mat-mdc-dialog-actions {
+  margin-top: 25px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  padding: 0 !important;
+}
+
+/* Cancelar */
+button[mat-button] {
+  color: #666 !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+}
+
+/* Guardar */
+button[mat-raised-button] {
+  background: #ffdd00 !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  border-radius: 30px !important;
+  padding: 8px 26px !important;
+  font-size: 15px !important;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18) !important;
+  transition: 0.2s !important;
+}
+
+button[mat-raised-button]:hover {
+  background: #ffe64d !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25) !important;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    padding: 22px !important;
+  }
+  .mat-mdc-dialog-title {
+    font-size: 20px !important;
+  }
+}
