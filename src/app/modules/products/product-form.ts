@@ -26,16 +26,41 @@ export class ProductForm {
 
   categories: any[] = [];
 
- form = new FormGroup({
-  name: new FormControl<string>('', { nonNullable: true }),
-  sku: new FormControl<string>('', { nonNullable: true }),
-  stock: new FormControl<number>(0, { nonNullable: true }),
-  costPrice: new FormControl<number>(0, { nonNullable: true }),
-  salePrice: new FormControl<number>(0, { nonNullable: true }),
-  categoryId: new FormControl<number>(0, { nonNullable: true }),
-  active: new FormControl<boolean>(true, { nonNullable: true }),
-});
+  form = new FormGroup({
+    name: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required]
+    }),
 
+    sku: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required]
+    }),
+
+    stock: new FormControl<number>(0, {
+      nonNullable: true,
+      validators: [Validators.required, Validators.min(0)]
+    }),
+
+    costPrice: new FormControl<number>(0, {
+      nonNullable: true,
+      validators: [Validators.required, Validators.min(0)]
+    }),
+
+    salePrice: new FormControl<number>(0, {
+      nonNullable: true,
+      validators: [Validators.required, Validators.min(0)]
+    }),
+
+    categoryId: new FormControl<number>(0, {
+      nonNullable: true,
+      validators: [Validators.required]
+    }),
+
+    active: new FormControl<boolean>(true, {
+      nonNullable: true
+    }),
+  });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Product | null) {}
 
@@ -46,17 +71,19 @@ export class ProductForm {
       this.form.patchValue(this.data);
     }
   }
-cancel() {
-  this.dialogRef.close();
-}
+
+  cancel() {
+    this.dialogRef.close();
+  }
 
   save() {
+    if (this.form.invalid) return;
+
     const value = this.form.value as Product;
 
-    const request =
-      this.data ?
-        this.productService.update(this.data.id!, value) :
-        this.productService.create(value);
+    const request = this.data
+      ? this.productService.update(this.data.id!, value)
+      : this.productService.create(value);
 
     request.subscribe(() => this.dialogRef.close(true));
   }

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule, MatSidenav } from '@angular/material/sidenav';
@@ -26,23 +26,33 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   templateUrl: './layout.html',
   styleUrls: ['./layout.scss']
 })
-export class Layout {
+export class Layout implements AfterViewInit {
+
   @ViewChild('sidenav') sidenav!: MatSidenav;
   isMobile = false;
 
-  constructor(private observer: BreakpointObserver) {}
+  constructor(
+    private observer: BreakpointObserver,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngAfterViewInit() {
-    this.observer.observe(['(max-width: 900px)']).subscribe(res => {
-      this.isMobile = res.matches;
+    // 🔥 Esto elimina NG0100
+    this.cdr.detectChanges();
 
-      if (this.isMobile) {
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-      } else {
-        this.sidenav.mode = 'side';
-        this.sidenav.open();
-      }
+    // 🔥 Mover estos cambios dentro de setTimeout evita cambiar valores en ciclo de detección
+    this.observer.observe('(max-width: 900px)').subscribe(res => {
+      setTimeout(() => {
+        this.isMobile = res.matches;
+
+        if (this.isMobile) {
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
+        } else {
+          this.sidenav.mode = 'side';
+          this.sidenav.open();
+        }
+      });
     });
   }
 
